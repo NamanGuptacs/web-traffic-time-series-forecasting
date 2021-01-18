@@ -21,10 +21,8 @@ def home():
 @app.route('/predict', methods=['POST'])
 def predict():
 	features = [x for x in request.form.to_dict()]
-    //index=request.form.to_dict()['Enter_index']
-    //date=request.form.to_dict()['Enter_date']
-    client,access,language,predicted,time=final_object.predict(features[0],features[1])
-    return flask.render_template('new.html',Client=client,Access=access,Language=language,predicted=predicted,time=time)
+	client,access,language,predicted,time=final_object.predict(features[0],features[1])
+	return flask.render_template('new.html',Client=client,Access=access,Language=language,predicted=predicted,time=time)
 
 if __name__ == '__main__':
     app.run(debug=True)
