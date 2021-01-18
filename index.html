@@ -1,0 +1,86 @@
+<html>
+<head>
+	<title>Wikipedia Project</title>
+	<style type="text/css">
+		body
+		{
+			background-image: url("hh.png");
+			background-repeat: no-repeat;
+			background-color: #e1eafa;
+		}
+		label
+		{
+			font-size: 25px;
+			font-weight: bolder;
+			color: blue;
+		}
+		textarea
+		{
+			background-color: #e1eafa;
+		}
+		#one
+		{
+			margin-left: 450px;
+		}
+		#two
+		{
+			margin-left: 463px;
+		}
+		#btn
+		{
+			height: 40px;
+			width: 120px;
+			margin-left: 650px;
+			border-radius: 20px;
+			border-color: white;
+			font-size: 16px;
+			background: blue;
+			font-weight: bold;
+		}
+		#onee
+		{
+			height: 100px;
+			width: 600px;
+			margin-top: 150px;
+			margin-left: 20px;
+			font-size: 20px;
+
+		}
+		#twoo
+		{
+			height: 100px;
+			width: 600px;
+			margin-left: 720px;
+			margin-top: -100px;
+			font-size: 20px;
+		}
+		#hr
+		{
+			text-decoration: none;
+		}
+	</style>
+</head>
+<body>
+    <h1>Wikipedia Web Traffic Forecasting</h1>
+
+<div>
+  <form action="/predict" method="POST">
+  	<br><br>
+    <label for="Enter_index" id="one">Enter index</label>
+      <textarea name="Enter_index" rows="4" cols="40"></textarea>
+    <br><br>
+    <label for="Enter_date" id="two">Enter date</label>
+      <textarea name="Enter_date" rows="4" cols="40"></textarea>
+    <br><br>
+    <input type="submit" value="Submit" id="btn">
+  </form>
+
+  <div id="onee">
+		&#x2A; Enter index(0-9999), All index has a wikipedia page corresponding to them, complete list of all indexes and their corresponding page can be found <a href="data_list.csv" id="hr">here</a> 
+	</div>
+	<div id="twoo">
+		&#x2A; Enter date for which you want to make prediction. Due to data limitation, model support date between 2015-07-06 to 2017-09-10. Date format must be yyyy-mm-dd, for example 2016-06-15.
+	</div>
+</div>
+</body>
+</html>
