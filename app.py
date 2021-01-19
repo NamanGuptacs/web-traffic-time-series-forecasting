@@ -7,14 +7,11 @@ import datetime
 import re
 
 from final_file import final
-# https://www.tutorialspoint.com/flask
+
 import flask
 app = Flask(__name__)
 
 final_object=final()
-###################################################
-
-###################################################
 
 
 @app.route('/',methods=['GET'])
@@ -24,9 +21,8 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    index=request.form.to_dict()['Enter_index']
-    date=request.form.to_dict()['Enter_date']
-    client,access,language,predicted,time=final_object.predict(index,date)
+    features = [x for x in request.form.values()]
+    client,access,language,predicted,time=final_object.predict(features[0],features[1])
     return flask.render_template('new.html',Client=client,Access=access,Language=language,predicted=predicted,time=time)
 
 if __name__ == '__main__':
