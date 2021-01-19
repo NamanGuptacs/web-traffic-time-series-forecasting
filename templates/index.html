@@ -1,86 +1,58 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>Wikipedia Project</title>
-	<style type="text/css">
-		body
-		{
-			background-image: url("hh.png");
-			background-repeat: no-repeat;
-			background-color: #e1eafa;
-		}
-		label
-		{
-			font-size: 25px;
-			font-weight: bolder;
-			color: blue;
-		}
-		textarea
-		{
-			background-color: #e1eafa;
-		}
-		#one
-		{
-			margin-left: 450px;
-		}
-		#two
-		{
-			margin-left: 463px;
-		}
-		#btn
-		{
-			height: 40px;
-			width: 120px;
-			margin-left: 650px;
-			border-radius: 20px;
-			border-color: white;
-			font-size: 16px;
-			background: blue;
-			font-weight: bold;
-		}
-		#onee
-		{
-			height: 100px;
-			width: 600px;
-			margin-top: 150px;
-			margin-left: 20px;
-			font-size: 20px;
-
-		}
-		#twoo
-		{
-			height: 100px;
-			width: 600px;
-			margin-left: 720px;
-			margin-top: -100px;
-			font-size: 20px;
-		}
-		#hr
-		{
-			text-decoration: none;
-		}
-	</style>
+  <title>Wikipedia Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Wikipedia Web Traffic Forecasting</h1>
 
-<div>
-  <form action="/predict" method="POST">
-  	<br><br>
-    <label for="Enter_index" id="one">Enter index</label>
-      <textarea name="Enter_index" rows="4" cols="40"></textarea>
-    <br><br>
-    <label for="Enter_date" id="two">Enter date</label>
-      <textarea name="Enter_date" rows="4" cols="40"></textarea>
-    <br><br>
-    <input type="submit" value="Submit" id="btn">
-  </form>
-
-  <div id="onee">
-		&#x2A; Enter index(0-9999), All index has a wikipedia page corresponding to them. 
-	</div>
-	<div id="twoo">
-		&#x2A; Enter date for which you want to make prediction. Due to data limitation, model support date between 2015-07-06 to 2017-09-10. Date format must be yyyy-mm-dd, for example 2016-06-15.
-	</div>
+<div class="jumbotron text-center">
+  <h1>Wikipedia Web Traffic Forecasting</h1>
+   
 </div>
+  
+<div class="container-sm container-md container-lg">
+  <div class="row">
+    <div class="col-sm-4">
+      
+      
+    </div>
+    <div class="col-sm-4">
+      <form action="{{ url_for('predict')}}"method="post">
+	   <div class="form-group">
+		<label for="index">Enter Page Index:</label>
+    	<input type="text" class="form-control" name="index_ID" placeholder="Index_ID" required="required" />
+		</div>
+		<div class="form-group">
+        <label for="dates">Enter Date:</label>
+		<input type="text" class="form-control" name="dates" placeholder="Date" required="required" />
+		</div>
+		<button type="submit" class="btn btn-primary btn-block btn-large">Submit</button>
+	  </form>
+    </div>
+    <div class="col-sm-4">
+      
+    </div>
+  </div>
+  
+  <div class="row">
+	<div class="col-sm-5">
+      <p class="text-info">&#x2A; Enter index(0-9999), All index has a wikipedia page corresponding to them.</p>
+      
+    </div>
+    <div class="col-sm-2">
+      
+    </div>
+    <div class="col-sm-5">
+      <p class="text-info">&#x2A; Enter date for which you want to make prediction. Due to data limitation, model support date between 2015-07-06 to 2017-09-10. Date format must be yyyy-mm-dd, for example 2016-06-15.</p>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
