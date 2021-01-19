@@ -76,4 +76,4 @@ class final:
         data=self.find_data(int(ind),date)
         time=datetime.datetime.now()-start
         predicted=int(np.round(np.expm1(self.model.predict([data,access,lang,agent])[0])[0]))
-        return(access1,agent1,language,predicted,time)
+        return(access1,agent1,language,predicted,time,self.page)
