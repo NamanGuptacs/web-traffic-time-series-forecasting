@@ -5,9 +5,6 @@ from keras.models import model_from_json
 import pandas as pd
 import datetime
 import re
-from flask_wtf import FlaskForm
-from wtforms.validators import NumberRange, InputRequired
-from wtforms import TextField,IntegerField
 from final_file import final
 
 import flask
