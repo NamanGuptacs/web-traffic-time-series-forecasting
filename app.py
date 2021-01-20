@@ -22,7 +22,7 @@ def predict():
     features = [x for x in request.form.values()]
     flag_ind = 0
     flag_date = 0
-    if feature[0].isdigit() == True:
+    if features[0].isdigit() == True:
         flag_ind=1
     if datetime.datetime.strptime(features[1], '%Y-%m-%d')==True:
         flag_date=1
