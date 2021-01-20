@@ -14,8 +14,6 @@ import flask
 app = Flask(__name__)
 
 final_object=final()
-class Form(FlaskForm):
-    index = IntegerField('Enter_index', validators=[InputRequired('Enter a correct index'),NumberRange(0,9999)])
 
 @app.route('/',methods=['GET'])
 def home():
@@ -24,12 +22,23 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    #features = [x for x in request.form.values()]
-    if request.method == "POST":
-        form = Form()  # will register fields called 'username' and 'email'.
-        if form.validate_on_submit():
-            client,access,language,predicted,time,page=final_object.predict(index)
+    features = [x for x in request.form.values()]
+    flag_ind = 0
+    flag_date = 0
+    if feature[0].isdigit() == True:
+        flag_ind=1
+    if datetime.datetime.strptime(features[1], '%Y-%m-%d')==True:
+        flag_date=1
+    if flag_ind==1 && flag_date==0:
+        return flask.render_template('index.html',error_index="Enter a Correct Index between 0-9999")
+    if flag_ind==0 && flag_date==1:
+        return flask.render_template('index.html',error_date="Enter a Correct Date between 2015-07-06-2017-09-10")
+    if flag_ind==0 && flag_date==0:     
+        if 0 <= int(features[0]) <= 9999 and features[1] in pd.date_range(start='2015-07-06', end='2017-09-10'):
+            client,access,language,predicted,time,page=final_object.predict(features[0],features[1])
             return flask.render_template('new.html',Client=client,Access=access,Language=language,predicted=predicted,time=time,Page=page)
-
+        else:
+            return flask.render_template('index.html',error_date="Enter a Correct Date between 2015-07-06-2017-09-10",error_index="Enter a Correct Index between 0-9999")
+        
 if __name__ == '__main__':
     app.run(debug=True)
