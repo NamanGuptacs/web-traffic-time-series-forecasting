@@ -28,7 +28,7 @@ def predict():
     if request.method == "POST":
         form = Form()  # will register fields called 'username' and 'email'.
         if form.validate_on_submit():
-            client,access,language,predicted,time,page=final_object.predict(index,features[1])
+            client,access,language,predicted,time,page=final_object.predict(index)
             return flask.render_template('new.html',Client=client,Access=access,Language=language,predicted=predicted,time=time,Page=page)
 
 if __name__ == '__main__':
