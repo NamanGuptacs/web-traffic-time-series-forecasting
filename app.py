@@ -30,7 +30,7 @@ def predict():
                 return flask.render_template('index.html',error_index="Enter a Correct Index value between 0-9999")
             else:
                 client,access,language,predicted,time,page=final_object.predict(features[0],features[1])
-                return flask.render_template('new.html',Client=client,Access=access,Language=language,predicted=predicted,time=time)
+                return flask.render_template('new.html',Client=client,Access=access,Language=language,predicted=predicted,time=time,Page=page)
     else:
         return flask.render_template('index.html',error_index="Enter a Correct Integer Index value")
         
